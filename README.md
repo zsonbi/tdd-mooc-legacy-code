@@ -1,57 +1,50 @@
-# Gilded Rose Refactoring Kata
+# [TDD MOOC](https://tdd-mooc.luontola.fi/): Legacy code
 
-This Kata was originally created by Terry Hughes (http://twitter.com/TerryHughes). It is already on GitHub [here](https://github.com/NotMyself/GildedRose). See also [Bobby Johnson's description of the kata](http://iamnotmyself.com/2011/02/13/refactor-this-the-gilded-rose-kata/).
+This is an exercise to practice dealing with legacy code. There are three things you need to do:
 
-I translated the original C# into a few other languages, (with a little help from my friends!), and slightly changed the starting position. This means I've actually done a small amount of refactoring already compared with the original form of the kata, and made it easier to get going with writing tests by giving you one failing unit test to start with. I also added test fixtures for Text-Based approval testing with TextTest (see [the TextTests](https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/master/texttests))
+1. **Write test for the code [src/gilded_rose.js](src/gilded_rose.js), until it has 100% mutation test coverage.**
+2. **Refactor the code to make it understandable.**
+3. **Add the "conjured items" feature described in [Gilded Rose requirements](GildedRoseRequirements.txt).**
 
-As Bobby Johnson points out in his article ["Why Most Solutions to Gilded Rose Miss The Bigger Picture"](http://iamnotmyself.com/2012/12/07/why-most-solutions-to-gilded-rose-miss-the-bigger-picture), it'll actually give you
-better practice at handling a legacy code situation if you do this Kata in the original C#. However, I think this kata
-is also really useful for practicing writing good tests using different frameworks and approaches, and the small changes I've made help with that. I think it's also interesting to compare what the refactored code and tests look like in different programming languages.
+When writing the tests, at first use just line coverage (`npm run coverage`) to find non-tested lines. After all lines
+are tested, switch to using mutation coverage (`npm run mutation`) and improve your tests. (In real projects, mutation
+coverage typically takes many minutes to run, so it's impractical when you need fast feedback.)
 
-I use this kata as part of my work as a technical coach. I wrote a lot about the coaching method I use in this book [Technical Agile Coaching with the Samman method](https://leanpub.com/techagilecoach). A while back I wrote this article ["Writing Good Tests for the Gilded Rose Kata"](http://coding-is-like-cooking.info/2013/03/writing-good-tests-for-the-gilded-rose-kata/) about how you could use this kata in a [coding dojo](https://leanpub.com/codingdojohandbook).
+When refactoring, first try to see how far you can get without understanding the problem domain (i.e. use mechanical,
+provably correct refactorings). Then read the [Gilded Rose requirements](GildedRoseRequirements.txt) document to
+understand the problem domain and get a new perspective for improving the design.
 
-## How to use this Kata
+---
 
-The simplest way is to just clone the code and start hacking away improving the design. You'll want to look at the ["Gilded Rose Requirements"](https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/master/GildedRoseRequirements.txt) which explains what the code is for. I strongly advise you that you'll also need some tests if you want to make sure you don't break the code while you refactor.
+_This exercise is part of the [TDD MOOC](https://tdd-mooc.luontola.fi) at the University of Helsinki, brought to you
+by [Esko Luontola](https://twitter.com/EskoLuontola) and [Nitor](https://nitor.com/). This exercise is based on
+the [Gilded Rose Refactoring Kata](https://github.com/emilybache/GildedRose-Refactoring-Kata)
+by [Emily Bache](https://twitter.com/emilybache) and [Terry Hughes](https://twitter.com/TerryHughes)._
 
-You could write some unit tests yourself, using the requirements to identify suitable test cases. I've provided a failing unit test in a popular test framework as a starting point for most languages.
+## Prerequisites
 
-Alternatively, use the "Text-Based" tests provided in this repository. (Read more about that in the next section)
+You'll need a recent [Node.js](https://nodejs.org/) version. Then download this project's dependencies with:
 
-Whichever testing approach you choose, the idea of the exercise is to do some deliberate practice, and improve your skills at designing test cases and refactoring. The idea is not to re-write the code from scratch, but rather to practice designing tests, taking small steps, running the tests often, and incrementally improving the design. 
+    npm install
 
-### Gilded Rose Requirements in other languages 
+## Developing
 
-- [English](GildedRoseRequirements.txt)
-- [Español](GildedRoseRequirements_es.md)
-- [Français](GildedRoseRequirements_fr.md)
-- [日本語](GildedRoseRequirements_jp.md)
-- [Português](GildedRoseRequirements_pt-BR.md)
-- [Русский](GildedRoseRequirements_ru.txt)
-- [ไทย](GildedRoseRequirements_th.md)
-- [中文](GildedRoseRequirements_zh.txt)
-- [한국어](GildedRoseRequirements_kr.md)
+Run tests once
 
-## Text-Based Approval Testing
+    npm run test
 
-This code comes with comprehensive tests that use this approach. For information about how to run them, see the [texttests README](https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/master/texttests)
+Run tests continuously
 
-## Translating this code
+    npm run autotest
 
-More translations are most welcome! I'm very open for pull requests that translate the starting position into additional languages. 
+Calculate line coverage
 
-Please note a translation should ideally include:
+    npm run coverage
 
-- a translation of the production code for 'update_quality' and Item
-- one failing unit test complaining that "fixme" != "foo"
-- a TextTest fixture, ie a command-line program that runs update_quality on the sample data for the number of days specified.
+Calculate mutation coverage
 
-Please don't write too much code in the starting position or add too many unit tests. The idea with the one failing unit test is to tempt people to work out how to fix it, discover it wasn't that hard, and now they understand what this test is doing they realize they can improve it.  
+    npm run mutation
 
-If your programming language doesn't have an easy way to add a command-line interface, then the TextTest fixture is probably not necessary.
+Code reformat
 
-## Better Code Hub
-
-I analysed this repo according to the clean code standards on [Better Code Hub](https://bettercodehub.com) just to get an independent opinion of how bad the code is. Perhaps unsurprisingly, the compliance score is low!
-
-[![BCH compliance](https://bettercodehub.com/edge/badge/emilybache/GildedRose-Refactoring-Kata?branch=master)](https://bettercodehub.com/) 
+    npm run format

@@ -1,5 +1,5 @@
 {
-  "name": "gilded-rose-kata",
+  "name": "tdd-mooc-legacy-code",
   "version": "1.0.0",
   "description": "Gilded Rose kata in Javascript with Mocha",
   "license": "MIT",
@@ -15,6 +15,10 @@
     "nyc": "^15.1.0",
     "prettier": "^2.4.1",
     "stryker-cli": "^1.0.2"
+  },
+  "engines": {
+    "node": ">=16",
+    "npm": ">=7"
   },
   "scripts": {
     "test": "mocha --require @babel/register",

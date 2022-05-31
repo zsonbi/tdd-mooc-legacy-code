@@ -7,8 +7,11 @@ This is an exercise to practice dealing with legacy code. There are three things
 3. **Add the "conjured items" feature described in [Gilded Rose requirements](GildedRoseRequirements.txt).**
 
 When writing the tests, at first use just line coverage (`npm run coverage`) to find non-tested lines. After all lines
-are tested, switch to using mutation coverage (`npm run mutation`) and improve your tests. (In real projects, mutation
-coverage typically takes many minutes to run, so it's impractical when you need fast feedback.)
+are tested, switch to using mutation coverage (`npm run mutation`) and improve your tests. Both commands write their
+reports in html format under the `coverage` directory.
+
+(In real projects, mutation coverage typically takes many minutes to run, so for faster feedback it can be practical to
+first focus on just the line coverage.)
 
 When refactoring, first try to see how far you can get without understanding the problem domain (i.e. use mechanical,
 provably correct refactorings). Then read the [Gilded Rose requirements](GildedRoseRequirements.txt) document to
@@ -37,11 +40,11 @@ Run tests continuously
 
     npm run autotest
 
-Calculate line coverage
+Calculate line coverage, writes results to `coverage/lcov-report/index.html`
 
     npm run coverage
 
-Calculate mutation coverage
+Calculate mutation coverage, writes results to `coverage/mutation-report/index.html`
 
     npm run mutation
 

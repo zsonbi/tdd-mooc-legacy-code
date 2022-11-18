@@ -2,7 +2,7 @@
 
 This is an exercise to practice dealing with legacy code. There are three things you need to do:
 
-1. **Write test for the code [src/gilded_rose.js](src/gilded_rose.js), until it has 100% mutation test coverage.**
+1. **Write test for the code [src/gilded_rose.mjs](src/gilded_rose.mjs), until it has 100% mutation test coverage.**
 2. **Refactor the code to make it understandable.**
 3. **Add the "conjured items" feature described in [Gilded Rose requirements](GildedRoseRequirements.txt).**
 

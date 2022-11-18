@@ -6,7 +6,7 @@
     "progress"
   ],
   "htmlReporter": {
-    "baseDir": "coverage/mutation-report"
+    "fileName": "coverage/mutation-report/index.html"
   },
   "testRunner": "mocha",
   "coverageAnalysis": "perTest"

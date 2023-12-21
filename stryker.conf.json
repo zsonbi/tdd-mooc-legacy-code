@@ -8,6 +8,6 @@
   "htmlReporter": {
     "fileName": "coverage/mutation-report/index.html"
   },
-  "testRunner": "mocha",
+  "testRunner": "vitest",
   "coverageAnalysis": "perTest"
 }

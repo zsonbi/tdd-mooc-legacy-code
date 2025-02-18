@@ -90,4 +90,94 @@ describe("Concert tests", () => {
     expect(items[0].sellIn).to.equal(14);
     expect(items[0].quality).to.equal(21);
   });
+
+  test("Concert will be in less than 11 days test", () => {
+    const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 10, 20)]);
+    let items = gildedRose.updateQuality();
+    expect(items[0].name).to.equal("Backstage passes to a TAFKAL80ETC concert");
+    expect(items[0].sellIn).to.equal(9);
+    expect(items[0].quality).to.equal(22);
+
+    items = gildedRose.updateQuality();
+    expect(items[0].name).to.equal("Backstage passes to a TAFKAL80ETC concert");
+    expect(items[0].sellIn).to.equal(8);
+    expect(items[0].quality).to.equal(24);
+  });
+
+  test("Concert will be in less than 11 days, but 50 quality test", () => {
+    const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 10, 50)]);
+    let items = gildedRose.updateQuality();
+    expect(items[0].name).to.equal("Backstage passes to a TAFKAL80ETC concert");
+    expect(items[0].sellIn).to.equal(9);
+    expect(items[0].quality).to.equal(50);
+
+    items = gildedRose.updateQuality();
+    expect(items[0].name).to.equal("Backstage passes to a TAFKAL80ETC concert");
+    expect(items[0].sellIn).to.equal(8);
+    expect(items[0].quality).to.equal(50);
+  });
+
+  test("Concert 5 days or less test", () => {
+    const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 5, 20)]);
+    let items = gildedRose.updateQuality();
+    expect(items[0].name).to.equal("Backstage passes to a TAFKAL80ETC concert");
+    expect(items[0].sellIn).to.equal(4);
+    expect(items[0].quality).to.equal(23);
+
+    items = gildedRose.updateQuality();
+    expect(items[0].name).to.equal("Backstage passes to a TAFKAL80ETC concert");
+    expect(items[0].sellIn).to.equal(3);
+    expect(items[0].quality).to.equal(26);
+    
+    items = gildedRose.updateQuality();
+    expect(items[0].name).to.equal("Backstage passes to a TAFKAL80ETC concert");
+    expect(items[0].sellIn).to.equal(2);
+    expect(items[0].quality).to.equal(29);
+  });
+
+  test("Concert 5 days or less and expires test", () => {
+    const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 2, 20)]);
+    let items = gildedRose.updateQuality();
+    expect(items[0].name).to.equal("Backstage passes to a TAFKAL80ETC concert");
+    expect(items[0].sellIn).to.equal(1);
+    expect(items[0].quality).to.equal(23);
+
+    items = gildedRose.updateQuality();
+    expect(items[0].name).to.equal("Backstage passes to a TAFKAL80ETC concert");
+    expect(items[0].sellIn).to.equal(0);
+    expect(items[0].quality).to.equal(26);
+    
+    items = gildedRose.updateQuality();
+    expect(items[0].name).to.equal("Backstage passes to a TAFKAL80ETC concert");
+    expect(items[0].sellIn).to.equal(-1);
+    expect(items[0].quality).to.equal(0);
+
+    items = gildedRose.updateQuality();
+    expect(items[0].name).to.equal("Backstage passes to a TAFKAL80ETC concert");
+    expect(items[0].sellIn).to.equal(-2);
+    expect(items[0].quality).to.equal(0);
+  });
+});
+
+describe("General item test", () => {
+  test("Warglaives of Azinoth (also legendary, but who cares) test", () => {
+    const gildedRose = new Shop([new Item("Warglaives of Azinoth", 5, 10)]);
+    let items = gildedRose.updateQuality();
+    expect(items[0].name).to.equal("Warglaives of Azinoth");
+    expect(items[0].sellIn).to.equal(4);
+    expect(items[0].quality).to.equal(9);
+  });
+
+  test("Expired test", () => {
+    const gildedRose = new Shop([new Item("Warglaives of Azinoth", 1, 10)]);
+    let items = gildedRose.updateQuality();
+    expect(items[0].name).to.equal("Warglaives of Azinoth");
+    expect(items[0].sellIn).to.equal(0);
+    expect(items[0].quality).to.equal(9);
+
+    items = gildedRose.updateQuality();
+    expect(items[0].name).to.equal("Warglaives of Azinoth");
+    expect(items[0].sellIn).to.equal(-1);
+    expect(items[0].quality).to.equal(7);
+  });
 });

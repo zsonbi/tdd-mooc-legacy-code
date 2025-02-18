@@ -21,6 +21,9 @@ export class Shop {
       //Decrease quality if not concert or brie
       if (this.items[i].name != "Aged Brie" && this.items[i].name != "Backstage passes to a TAFKAL80ETC concert") {
           this.items[i].quality = this.decreaseQuality(this.items[i].quality);
+          if(this.items[i].name.includes("Conjured")){
+            this.items[i].quality = this.decreaseQuality(this.items[i].quality);
+          }
       }
       else {
           this.items[i].quality = this.increaseQuality(this.items[i].quality);
@@ -38,6 +41,9 @@ export class Shop {
         if (this.items[i].name != "Aged Brie") {
           if (this.items[i].name != "Backstage passes to a TAFKAL80ETC concert") {
                 this.items[i].quality = this.decreaseQuality(this.items[i].quality);
+                if(this.items[i].name.includes("Conjured")){
+                  this.items[i].quality = this.decreaseQuality(this.items[i].quality);
+                }
           } else {
             this.items[i].quality = 0;
           }

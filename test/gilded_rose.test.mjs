@@ -22,6 +22,28 @@ describe("General tests", () => {
   });
 });
 
+describe("Conjured item tests", () => {
+  test("Conjured item quality decrease test", () => {
+    const gildedRose = new Shop([new Item("Conjured Mana Buns", 2, 10)]);
+    let items = gildedRose.updateQuality();
+    expect(items[0].name).to.equal("Conjured Mana Buns");
+    expect(items[0].sellIn).to.equal(1);
+    expect(items[0].quality).to.equal(8);
+    items = gildedRose.updateQuality();
+    expect(items[0].name).to.equal("Conjured Mana Buns");
+    expect(items[0].sellIn).to.equal(0);
+    expect(items[0].quality).to.equal(6);
+    items = gildedRose.updateQuality();
+    expect(items[0].name).to.equal("Conjured Mana Buns");
+    expect(items[0].sellIn).to.equal(-1);
+    expect(items[0].quality).to.equal(2);
+    items = gildedRose.updateQuality();
+    expect(items[0].name).to.equal("Conjured Mana Buns");
+    expect(items[0].sellIn).to.equal(-2);
+    expect(items[0].quality).to.equal(0);
+  });
+});
+
 describe("Sulfuras tests", () => {
   test("No decrease", () => {
     const gildedRose = new Shop([new Item("Sulfuras, Hand of Ragnaros", 0, 80)]);
